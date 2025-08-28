@@ -12,11 +12,11 @@ RMAA is a **two-layer dynamic asset allocation framework**:
 
 ### 1. Regime Detection
 - **Indicators**
-  - OECD CLI (Composite Leading Indicator, growth proxy)  
-  - VIX (Volatility Index, risk proxy)  
+- OECD CLI (Composite Leading Indicator, growth proxy)  
+- VIX (Volatility Index, risk proxy)  
 - **Method**
-  - Rolling 36-month distribution to classify High / Medium / Low  
-  - Growth × Volatility → **9 regimes in total**  
+- Rolling 36-month distribution to classify High / Medium / Low  
+- Growth × Volatility → **9 regimes in total**  
 
 ### 2. Asset Allocation (Inter-asset)
 - Optimize stock vs bond weights per regime to maximize Sharpe ratio  
@@ -32,10 +32,10 @@ RMAA is a **two-layer dynamic asset allocation framework**:
 - Split into **In-sample (2008–2019)** vs **Out-of-sample (2020–present)**  
 - Performance metrics: CAGR, Annual Volatility, Sharpe Ratio  
 - Outputs:
-  - Cumulative return plots  
-  - Optimal regime weights (stock/bond)  
-  - Final ETF allocation  
-  - DV01 (bond duration & rate sensitivity)  
+- Cumulative return plots  
+- Optimal regime weights (stock/bond)  
+- Final ETF allocation  
+- DV01 (bond duration & rate sensitivity)  
 - Results exported to Excel: `regime_allocation_report_YYYYMMDD.xlsx`  
 
 ---
@@ -74,13 +74,13 @@ python regime_strategy_fixed.py
 
 * **Console**:
 
-  * In-sample & Out-of-sample performance metrics
-  * Current regime classification
-  * Optimal regime-specific weights
-  * Final ETF allocations & DV01 table
+* In-sample & Out-of-sample performance metrics
+* Current regime classification
+* Optimal regime-specific weights
+* Final ETF allocations & DV01 table
 * **Desktop**:
 
-  * Excel report with performance, weights, DV01, and allocation tables
+* Excel report with performance, weights, DV01, and allocation tables
 
 ---
 
@@ -99,16 +99,3 @@ python regime_strategy_fixed.py
 * [ ] Volatility targeting (risk scaling)
 * [ ] Multi-asset extension (commodities, gold, REITs)
 * [ ] Interactive dashboard (Streamlit/Plotly)
-
----
-
-## 📄 License
-
-MIT License. See `LICENSE` for details.
-
-```
-
----
-
-👉 Do you want me to also write a **short GitHub repo description (one-liner, ≤70 chars)** that fits well above this README (for the repo front page)?
-```
