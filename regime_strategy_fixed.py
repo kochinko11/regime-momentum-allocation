@@ -533,8 +533,8 @@ class RegimeBasedAssetAllocator:
 
         # (19) 엑셀로 결과 저장 - 날짜 포함 + 수치형 비중
         today_str = datetime.today().strftime('%Y%m%d')
-        desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
-        file_name = os.path.join(desktop_path, f"regime_allocation_report_{today_str}.xlsx")
+        current_path =  os.path.dirname(os.path.abspath(__file__))
+        file_name = os.path.join(current_path, f"regime_allocation_report_{today_str}.xlsx")
         #stock / bond 비중 숫자형으로 다시 준비
         final_stock_weights_numeric = stock_weights.iloc[-1].drop('stock_weight_change')
         final_bond_weights_numeric = bond_weights.iloc[-1].drop('bond_weight_change')
