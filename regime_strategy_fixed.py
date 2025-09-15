@@ -545,7 +545,7 @@ class RegimeBasedAssetAllocator:
             PortfolioSimulator.performance_metrics(portfolio_returns.loc[:split_date]).to_excel(writer, sheet_name="In-sample")
             PortfolioSimulator.performance_metrics(portfolio_returns.loc[oos_start_date:]).to_excel(writer, sheet_name="Out-of-sample")
 
-            # Regime별 최적 비중 및 현재 reigme 우측에 추가가
+            # Regime별 최적 비중 및 현재 reigme 우측에 추가
             optimal_weights.to_excel(writer, sheet_name="Optimal Regime Weights")
             info_df = pd.DataFrame({'Current Regime': [current_regime]})
             info_df.to_excel(writer, sheet_name="Optimal Regime Weights", startrow=0, startcol=5, index=False)
