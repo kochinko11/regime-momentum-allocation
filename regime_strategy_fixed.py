@@ -31,13 +31,14 @@ class DataFetcher:
         
         vix_monthly.loc[latest_month_start_price] = last_vix_value
         vix_monthly = vix_monthly.sort_index()
-
         
         cli_last_date = cli_dataframe.index.max()
         lagging = (last_vix_date.to_period('M') - cli_last_date.to_period('M')).n
 
         cli_dataframe = cli_dataframe.reindex(vix_monthly.index)
         cli_dataframe['cli'] = cli_dataframe['cli'].ffill(limit=2)
+        
+        print("vix_date:", last_vix_date,"cli_date:", cli_last_date, "lagging:", lagging)
         
         return cli_dataframe, vix_monthly, lagging
 
@@ -544,8 +545,10 @@ class RegimeBasedAssetAllocator:
             PortfolioSimulator.performance_metrics(portfolio_returns.loc[:split_date]).to_excel(writer, sheet_name="In-sample")
             PortfolioSimulator.performance_metrics(portfolio_returns.loc[oos_start_date:]).to_excel(writer, sheet_name="Out-of-sample")
 
-            # Regime별 최적 비중
+            # Regime별 최적 비중 및 현재 reigme 우측에 추가가
             optimal_weights.to_excel(writer, sheet_name="Optimal Regime Weights")
+            info_df = pd.DataFrame({'Current Regime': [current_regime]})
+            info_df.to_excel(writer, sheet_name="Optimal Regime Weights", startrow=0, startcol=5, index=False)
 
             # 주식/채권 ETF 최종 비중 (숫자형)
             final_stock_weights_numeric.to_frame(name="Weight").to_excel(writer, sheet_name="Stock Weights")
